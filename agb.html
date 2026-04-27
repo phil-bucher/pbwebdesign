@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGB – PB Webdesign</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080808;
+      --bg2: #101010;
+      --white: #F0EEE8;
+      --accent: #D4A853;
+      --grey: #666660;
+      --border: rgba(255,255,255,0.07);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--white); }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.08em; color: var(--white); text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+
+    .page-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 4rem;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    .last-updated {
+      font-size: 0.8rem;
+      color: var(--grey);
+      margin-bottom: 4rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    p {
+      font-size: 0.92rem;
+      color: var(--grey);
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      list-style: none;
+      margin-bottom: 1rem;
+    }
+
+    ul li {
+      font-size: 0.92rem;
+      color: var(--grey);
+      line-height: 1.8;
+      font-weight: 300;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    ul li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 5rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--grey);
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .container { padding: 4rem 1.5rem; }
+      h1 { font-size: 2.5rem; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">PB<span>.</span>Webdesign</a>
+    <span style="font-size:0.8rem;color:var(--grey)">Allgemeine Geschäftsbedingungen</span>
+  </nav>
+
+  <div class="container">
+    <div class="page-label">Rechtliches</div>
+    <h1>AGB</h1>
+    <div class="last-updated">Stand: April 2025 · PB Webdesign, info@pbwebdesign.ch</div>
+
+    <h2>1. Geltungsbereich</h2>
+    <p>Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen PB Webdesign (nachfolgend „Auftragnehmer") und seinen Kunden (nachfolgend „Auftraggeber") im Zusammenhang mit der Erstellung von Webseiten und damit verbundenen Dienstleistungen.</p>
+
+    <h2>2. Vertragsabschluss</h2>
+    <p>Ein Vertrag kommt zustande, sobald der Auftraggeber ein schriftliches Angebot des Auftragnehmers per E-Mail oder schriftlich bestätigt. Mit der Bestätigung akzeptiert der Auftraggeber diese AGB vollumfänglich.</p>
+
+    <h2>3. Leistungsumfang</h2>
+    <p>Der genaue Leistungsumfang ergibt sich aus dem individuellen Angebot. Typische Leistungen umfassen:</p>
+    <ul>
+      <li>Erstellung einer Webseite gemäss Angebot</li>
+      <li>Einrichtung von Hosting und Domain (sofern vereinbart)</li>
+      <li>Grundlegende SEO-Optimierung</li>
+      <li>Vereinbarte Anpassungsrunden</li>
+    </ul>
+    <p>Leistungen die nicht im Angebot enthalten sind, werden separat in Rechnung gestellt.</p>
+
+    <h2>4. Mitwirkungspflicht des Auftraggebers</h2>
+    <p>Der Auftraggeber stellt dem Auftragnehmer alle notwendigen Informationen, Texte, Bilder und Zugänge rechtzeitig zur Verfügung. Verzögerungen durch fehlende Unterlagen gehen nicht zu Lasten des Auftragnehmers.</p>
+
+    <h2>5. Zahlungsbedingungen</h2>
+    <p>Es gelten folgende Zahlungskonditionen:</p>
+    <ul>
+      <li>50% Anzahlung bei Auftragserteilung</li>
+      <li>50% Schlusszahlung nach Abnahme der fertigen Webseite</li>
+      <li>Zahlungsziel: 10 Tage netto</li>
+      <li>Bei Zahlungsverzug werden Verzugszinsen von 5% p.a. erhoben</li>
+    </ul>
+
+    <h2>6. Anpassungen & Änderungen</h2>
+    <p>Im Angebot enthaltene Anpassungsrunden berechtigen zu klar definierten Überarbeitungen. Umfangreiche Änderungen oder Erweiterungen des ursprünglichen Auftrags werden zu einem Stundensatz von CHF 80.– separat verrechnet.</p>
+
+    <h2>7. Abnahme & Übergabe</h2>
+    <p>Nach Fertigstellung erhält der Auftraggeber die Webseite zur Prüfung. Ohne schriftliche Rückmeldung innerhalb von 7 Tagen gilt die Webseite als abgenommen. Mit der Abnahme ist die Schlusszahlung fällig.</p>
+
+    <h2>8. Urheberrecht</h2>
+    <p>Das Urheberrecht am Design und am Code verbleibt bis zur vollständigen Bezahlung beim Auftragnehmer. Nach vollständiger Zahlung erhält der Auftraggeber ein nicht-exklusives Nutzungsrecht an der erstellten Webseite.</p>
+
+    <h2>9. Haftung</h2>
+    <p>Der Auftragnehmer haftet nicht für:</p>
+    <ul>
+      <li>Ausfälle oder Probleme beim Hosting-Anbieter</li>
+      <li>Schäden die durch fehlerhafte oder fehlende Inhalte des Auftraggebers entstehen</li>
+      <li>Mittelbare oder Folgeschäden jeglicher Art</li>
+      <li>Änderungen in Suchmaschinenalgorithmen die die Sichtbarkeit beeinflussen</li>
+    </ul>
+
+    <h2>10. Kündigung Wartungsvertrag</h2>
+    <p>Der monatliche Wartungsvertrag kann mit einer Frist von 30 Tagen auf Ende des Monats schriftlich per E-Mail gekündigt werden. Nach Kündigung ist der Auftraggeber für das eigene Hosting verantwortlich.</p>
+
+    <h2>11. Datenschutz</h2>
+    <p>Der Auftragnehmer behandelt alle Kundendaten vertraulich und gibt diese nicht an Dritte weiter. Weitere Informationen finden Sie in unserer <a href="datenschutz.html" style="color:var(--accent)">Datenschutzerklärung</a>.</p>
+
+    <h2>12. Anwendbares Recht & Gerichtsstand</h2>
+    <p>Es gilt Schweizer Recht. Gerichtsstand ist der Wohnort des Auftragnehmers in der Schweiz.</p>
+
+    <h2>13. Änderungen der AGB</h2>
+    <p>PB Webdesign behält sich das Recht vor, diese AGB jederzeit anzupassen. Die jeweils aktuelle Version ist auf pbwebdesign.ch abrufbar.</p>
+
+  </div>
+
+  <footer>
+    <span>© 2025 PB Webdesign</span>
+    <span>info@pbwebdesign.ch</span>
+  </footer>
+
+</body>
+</html>
