@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PB Webdesign – Professionelle Webseiten für KMUs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080808;
+      --bg2: #101010;
+      --bg3: #161616;
+      --white: #F0EEE8;
+      --accent: #D4A853;
+      --accent2: #B8902E;
+      --grey: #666660;
+      --border: rgba(255,255,255,0.07);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 5rem;
+      background: rgba(8,8,8,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.08em;
+      color: var(--white);
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--grey);
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      border: 1px solid var(--accent);
+      color: var(--accent) !important;
+      padding: 0.5rem 1.4rem;
+      transition: all 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--accent) !important;
+      color: var(--bg) !important;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 10rem 5rem 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(212,168,83,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -10%;
+      left: -5%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(212,168,83,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(212,168,83,0.1);
+      border: 1px solid rgba(212,168,83,0.2);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 2.5rem;
+      width: fit-content;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 9vw, 9rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      margin-bottom: 2rem;
+      max-width: 900px;
+    }
+
+    .hero-title .accent { color: var(--accent); }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--grey);
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 3.5rem;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-gold {
+      background: var(--accent);
+      color: var(--bg);
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+
+    .btn-gold:hover { background: var(--accent2); transform: translateY(-2px); }
+
+    .btn-ghost {
+      border: 1px solid var(--border);
+      color: var(--grey);
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+
+    .btn-ghost:hover { border-color: var(--white); color: var(--white); }
+
+    .hero-numbers {
+      display: flex;
+      gap: 4rem;
+      margin-top: 6rem;
+      padding-top: 4rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .hero-num {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-num-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .hero-num-label {
+      font-size: 0.75rem;
+      color: var(--grey);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 0.4rem;
+    }
+
+    /* ── LEISTUNGEN ── */
+    .leistungen {
+      padding: 8rem 5rem;
+      background: var(--bg2);
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      letter-spacing: 0.03em;
+      line-height: 1;
+      margin-bottom: 4rem;
+    }
+
+    .leistungen-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .leistung-card {
+      background: var(--bg2);
+      padding: 3rem;
+      transition: background 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .leistung-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      height: 2px;
+      width: 0;
+      background: var(--accent);
+      transition: width 0.4s ease;
+    }
+
+    .leistung-card:hover { background: var(--bg3); }
+    .leistung-card:hover::after { width: 100%; }
+
+    .leistung-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      color: rgba(212,168,83,0.5);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .leistung-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.02em;
+    }
+
+    .leistung-desc {
+      font-size: 0.88rem;
+      color: var(--grey);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ── PREISE ── */
+    .preise {
+      padding: 8rem 5rem;
+      background: var(--bg);
+    }
+
+    .preise-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .preis-card {
+      border: 1px solid var(--border);
+      padding: 3rem;
+      border-radius: 4px;
+      transition: border-color 0.3s, transform 0.3s;
+      position: relative;
+      background: var(--bg2);
+    }
+
+    .preis-card:hover {
+      border-color: rgba(212,168,83,0.3);
+      transform: translateY(-4px);
+    }
+
+    .preis-card.featured {
+      border-color: var(--accent);
+      background: var(--bg3);
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: var(--bg);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.3rem 1rem;
+      border-radius: 0 0 4px 4px;
+    }
+
+    .preis-name {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .preis-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .preis-val span {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--grey);
+    }
+
+    .preis-sub {
+      font-size: 0.78rem;
+      color: var(--grey);
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .preis-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .preis-features li {
+      font-size: 0.85rem;
+      color: var(--grey);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-weight: 300;
+    }
+
+    .preis-features li::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .preis-features li.disabled {
+      opacity: 0.3;
+      text-decoration: line-through;
+    }
+
+    .preis-features li.disabled::before {
+      content: '✗';
+      color: var(--grey);
+    }
+
+    .preis-btn {
+      display: block;
+      text-align: center;
+      padding: 0.9rem;
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+
+    .preis-btn-ghost {
+      border: 1px solid var(--border);
+      color: var(--grey);
+    }
+
+    .preis-btn-ghost:hover { border-color: var(--white); color: var(--white); }
+
+    .preis-btn-gold {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    .preis-btn-gold:hover { background: var(--accent2); }
+
+    .preis-note {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--grey);
+      margin-top: 2.5rem;
+      font-weight: 300;
+    }
+
+    /* ── KONTAKT ── */
+    .kontakt {
+      padding: 8rem 5rem;
+      background: var(--bg2);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8rem;
+      align-items: center;
+    }
+
+    .kontakt-left .section-title { margin-bottom: 1.5rem; }
+
+    .kontakt-desc {
+      font-size: 0.95rem;
+      color: var(--grey);
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+    }
+
+    .kontakt-mail {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 1.2rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      color: var(--accent);
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .kontakt-mail:hover {
+      border-color: var(--accent);
+      background: rgba(212,168,83,0.05);
+    }
+
+    .kontakt-mail::before {
+      content: '✉';
+      font-size: 1.1rem;
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 0.9rem 1rem;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      border-radius: 2px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.9rem;
+      color: var(--white);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--accent);
+    }
+
+    .form-group select option { background: var(--bg2); }
+    .form-group textarea { resize: none; min-height: 110px; }
+
+    .form-submit {
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      padding: 1rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .form-submit:hover { background: var(--accent2); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--grey);
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.08em;
+      color: var(--white);
+    }
+
+    .footer-logo span { color: var(--accent); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { padding: 7rem 1.5rem 4rem; }
+      .hero-numbers { gap: 2rem; flex-wrap: wrap; }
+      .leistungen { padding: 5rem 1.5rem; }
+      .leistungen-grid { grid-template-columns: 1fr; }
+      .preise { padding: 5rem 1.5rem; }
+      .preise-grid { grid-template-columns: 1fr; }
+      .kontakt { grid-template-columns: 1fr; padding: 5rem 1.5rem; gap: 3rem; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">PB<span>.</span>Webdesign</div>
+    <ul class="nav-links">
+      <li><a href="#leistungen">Leistungen</a></li>
+      <li><a href="#preise">Preise</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+      <li><a href="#kontakt" class="nav-cta">Anfrage stellen</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-tag">Webdesign für lokale KMUs · Schweiz</div>
+    <h1 class="hero-title">
+      Ihre neue<br/>
+      <span class="accent">Webseite.</span><br/>
+      Professionell.
+    </h1>
+    <p class="hero-sub">
+      Ich erstelle massgeschneiderte Webseiten für kleine und mittlere Unternehmen in der Schweiz –
+      modern, schnell und ohne technischen Aufwand für Sie.
+    </p>
+    <div class="hero-actions">
+      <a href="#preise" class="btn-gold">Preise ansehen</a>
+      <a href="#kontakt" class="btn-ghost">Kontakt aufnehmen</a>
+    </div>
+    <div class="hero-numbers">
+      <div class="hero-num">
+        <div class="hero-num-val">3+</div>
+        <div class="hero-num-label">Kundenprojekte</div>
+      </div>
+      <div class="hero-num">
+        <div class="hero-num-val">100%</div>
+        <div class="hero-num-label">Persönlicher Service</div>
+      </div>
+      <div class="hero-num">
+        <div class="hero-num-val">CH</div>
+        <div class="hero-num-label">Schweizweit</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEISTUNGEN -->
+  <section class="leistungen" id="leistungen">
+    <div class="section-label">Was ich anbiete</div>
+    <h2 class="section-title">Leistungen</h2>
+    <div class="leistungen-grid">
+      <div class="leistung-card">
+        <div class="leistung-num">01</div>
+        <div class="leistung-title">Webseiten Erstellung</div>
+        <p class="leistung-desc">Massgeschneiderte Webseiten für Ihr Unternehmen – modernes Design, schnell geladen, auf jedem Gerät perfekt dargestellt.</p>
+      </div>
+      <div class="leistung-card">
+        <div class="leistung-num">02</div>
+        <div class="leistung-title">Hosting & Domain</div>
+        <p class="leistung-desc">Ich kümmere mich um alles – von der Domain-Registrierung bis zum zuverlässigen Hosting. Ihre Webseite ist 24/7 erreichbar.</p>
+      </div>
+      <div class="leistung-card">
+        <div class="leistung-num">03</div>
+        <div class="leistung-title">Google Optimierung</div>
+        <p class="leistung-desc">Grundlegende SEO-Optimierung damit Ihre Webseite bei Google gefunden wird – mehr Sichtbarkeit für Ihr Unternehmen.</p>
+      </div>
+      <div class="leistung-card">
+        <div class="leistung-num">04</div>
+        <div class="leistung-title">Anpassungen & Updates</div>
+        <p class="leistung-desc">Neue Öffnungszeiten, geänderte Preise oder ein neues Foto? Ich erledige Anpassungen schnell und unkompliziert.</p>
+      </div>
+      <div class="leistung-card">
+        <div class="leistung-num">05</div>
+        <div class="leistung-title">Kontaktformular</div>
+        <p class="leistung-desc">Ihre Kunden können Sie direkt über die Webseite kontaktieren – einfach, professionell und direkt in Ihre E-Mail.</p>
+      </div>
+      <div class="leistung-card">
+        <div class="leistung-num">06</div>
+        <div class="leistung-title">Persönliche Beratung</div>
+        <p class="leistung-desc">Ich begleite Sie durch den ganzen Prozess – von der ersten Idee bis zur fertigen Webseite. Kein technisches Wissen nötig.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREISE -->
+  <section class="preise" id="preise">
+    <div class="section-label">Transparente Preise</div>
+    <h2 class="section-title">Pakete</h2>
+    <div class="preise-grid">
+
+      <!-- Starter -->
+      <div class="preis-card">
+        <div class="preis-name">Starter</div>
+        <div class="preis-val">299 <span>CHF</span></div>
+        <div class="preis-sub">Einmalige Einrichtung · danach 99 CHF/Mt.</div>
+        <ul class="preis-features">
+          <li>Professionelles Design</li>
+          <li>Bis zu 3 Seiten</li>
+          <li>Kontaktformular</li>
+          <li>Mobilgeräte-optimiert</li>
+          <li>1 Anpassungsrunde</li>
+          <li>Hosting inklusive</li>
+          <li>Kleinere Textanpassungen</li>
+          <li>Technischer Support</li>
+          <li class="disabled">Google Optimierung (SEO)</li>
+          <li class="disabled">Domain & Hosting Setup</li>
+        </ul>
+        <a href="#kontakt" class="preis-btn preis-btn-ghost">Anfragen</a>
+      </div>
+
+      <!-- Business -->
+      <div class="preis-card featured">
+        <div class="featured-badge">Empfohlen</div>
+        <div class="preis-name">Business</div>
+        <div class="preis-val">499 <span>CHF</span></div>
+        <div class="preis-sub">Einmalige Einrichtung · danach 149 CHF/Mt.</div>
+        <ul class="preis-features">
+          <li>Professionelles Design</li>
+          <li>Bis zu 6 Seiten</li>
+          <li>Kontaktformular</li>
+          <li>Mobilgeräte-optimiert</li>
+          <li>2 Anpassungsrunden</li>
+          <li>Google Optimierung (SEO)</li>
+          <li>Domain & Hosting Setup</li>
+          <li>Hosting inklusive</li>
+          <li>Kleinere Textanpassungen</li>
+          <li>Technischer Support & Backups</li>
+        </ul>
+        <a href="#kontakt" class="preis-btn preis-btn-gold">Anfragen</a>
+      </div>
+
+      <!-- Hosting -->
+      <div class="preis-card">
+        <div class="preis-name">Hosting & Wartung</div>
+        <div class="preis-val" style="font-size:2.8rem">99 <span>CHF/Mt.</span></div>
+        <div class="preis-sub">Sie haben bereits eine Webseite? Ich übernehme.</div>
+        <ul class="preis-features">
+          <li>Übernahme Ihrer bestehenden Webseite</li>
+          <li>Hosting & Domain-Verwaltung</li>
+          <li>Kleinere Textanpassungen</li>
+          <li>Technischer Support per E-Mail</li>
+          <li>Regelmässige Backups</li>
+          <li>Webseite immer online & aktuell</li>
+        </ul>
+        <a href="#kontakt" class="preis-btn preis-btn-ghost">Anfragen</a>
+      </div>
+
+    </div>
+    <p class="preis-note">Alle Preise exkl. MwSt. · Mindestlaufzeit 3 Monate · danach monatlich kündbar.</p>
+  </section>
+
+  <!-- KONTAKT -->
+  <section class="kontakt" id="kontakt">
+    <div class="kontakt-left">
+      <div class="section-label">Jetzt starten</div>
+      <h2 class="section-title">Interesse?<br/>Melden Sie<br/>sich bei mir.</h2>
+      <p class="kontakt-desc">
+        Füllen Sie das Formular aus oder schreiben Sie mir direkt eine E-Mail –
+        ich melde mich so schnell wie möglich bei Ihnen.
+      </p>
+      <a href="mailto:info@pbwebdesign.ch" class="kontakt-mail">
+        info@pbwebdesign.ch
+      </a>
+    </div>
+    <form class="form" action="https://formspree.io/f/mkokawjl" method="POST">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Vorname</label>
+          <input type="text" name="vorname" placeholder="Max" />
+        </div>
+        <div class="form-group">
+          <label>Nachname</label>
+          <input type="text" name="nachname" placeholder="Mustermann" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>E-Mail</label>
+        <input type="email" name="email" placeholder="max@mustermann.ch" />
+      </div>
+      <div class="form-group">
+        <label>Unternehmen</label>
+        <input type="text" name="unternehmen" placeholder="Muster GmbH" />
+      </div>
+      <div class="form-group">
+        <label>Betreff</label>
+        <select name="betreff">
+          <option value="">Bitte wählen...</option>
+          <option>Starter – 299 CHF + 99 CHF/Mt.</option>
+          <option>Business – 499 CHF + 149 CHF/Mt.</option>
+          <option>Hosting & Wartung – 99 CHF/Mt.</option>
+              <option>Anderes Anliegen</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Nachricht</label>
+        <textarea name="nachricht" placeholder="Beschreiben Sie kurz Ihr Unternehmen und was Sie sich vorstellen..."></textarea>
+      </div>
+      <button class="form-submit" type="submit">Anfrage absenden →</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">PB<span>.</span>Webdesign</div>
+    <div>© 2025 PB Webdesign · pbwebdesign.ch</div>
+    <div style="display:flex;gap:1.5rem;align-items:center">
+      <a href="agb.html" style="color:var(--grey);text-decoration:none;font-size:0.8rem;transition:color 0.2s" onmouseover="this.style.color='#D4A853'" onmouseout="this.style.color='#666660'">AGB</a>
+      <a href="datenschutz.html" style="color:var(--grey);text-decoration:none;font-size:0.8rem;transition:color 0.2s" onmouseover="this.style.color='#D4A853'" onmouseout="this.style.color='#666660'">Datenschutz</a>
+      <span>info@pbwebdesign.ch</span>
+    </div>
+  </footer>
+
+</body>
+</html>
