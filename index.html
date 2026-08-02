@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PB Webdesign — Webseiten, die auffallen</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#050505;
+  --panel:#0C0C0E;
+  --white:#F5F5F7;
+  --grey:#86868B;
+  --accent:#D4A857;
+  --accent-glow:#E8C77A;
+  --accent-deep:#A8842E;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden}
+::selection{background:var(--accent);color:#000}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;background:rgba(5,5,5,0.6);backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(255,255,255,0.06)}
+.logo{font-size:1.2rem;font-weight:800;letter-spacing:0.05em}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--grey);font-size:0.82rem;font-weight:500;transition:color .3s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{border:1px solid var(--accent);color:var(--accent) !important;padding:0.5rem 1.3rem;border-radius:100px;transition:all .3s !important}
+.nav-cta:hover{background:var(--accent);color:#000 !important}
+@media(max-width:800px){nav{padding:1rem 1.3rem}.nav-links{display:none}}
+.hero{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 120%, rgba(212,168,87,0.25) 0%, transparent 60%),radial-gradient(ellipse 50% 40% at 80% 10%, rgba(212,168,87,0.08) 0%, transparent 50%)}
+.hero-content{position:relative;z-index:2;padding:0 2rem}
+.hero-eyebrow{font-size:0.85rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;opacity:0;animation:fadeUp 1s ease .3s forwards}
+.hero h1{font-size:clamp(3rem,10vw,8rem);font-weight:800;line-height:0.95;letter-spacing:-0.04em;margin-bottom:1.5rem}
+.hero h1 .l{display:inline-block;opacity:0;transform:translateY(40px);animation:letterUp .8s cubic-bezier(.2,.8,.2,1) forwards}
+.hero h1 .grad{background:linear-gradient(120deg,var(--accent),var(--accent-glow),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{font-size:clamp(1.1rem,2.5vw,1.5rem);color:var(--grey);font-weight:300;max-width:600px;margin:0 auto 2.5rem;opacity:0;animation:fadeUp 1s ease 1s forwards}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp 1s ease 1.2s forwards}
+.btn-gold{background:var(--accent);color:#000;text-decoration:none;padding:1rem 2.2rem;border-radius:100px;font-weight:600;font-size:0.95rem;transition:transform .3s,background .3s}
+.btn-gold:hover{transform:scale(1.05);background:var(--accent-glow)}
+.btn-ghost{border:1px solid rgba(255,255,255,0.2);color:var(--white);text-decoration:none;padding:1rem 2.2rem;border-radius:100px;font-weight:500;font-size:0.95rem;transition:border-color .3s}
+.btn-ghost:hover{border-color:var(--white)}
+.hero-hint{position:absolute;bottom:2.5rem;left:50%;font-size:0.72rem;color:var(--grey);letter-spacing:0.2em;text-transform:uppercase;opacity:0;animation:fadeUp 1s ease 1.5s forwards, bob 2s ease-in-out 2s infinite}
+@keyframes letterUp{to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+.sticky-section{height:400vh;position:relative}
+.sticky-inner{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.showcase-bg{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(212,168,87,0.08),transparent 60%);opacity:0;will-change:opacity}
+.browser{position:relative;width:min(85vw,900px);will-change:transform;border-radius:14px;overflow:hidden;box-shadow:0 50px 100px rgba(0,0,0,0.7);border:1px solid rgba(255,255,255,0.1)}
+.browser-bar{background:#1a1a1c;padding:0.9rem 1.2rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid rgba(255,255,255,0.06)}
+.browser-dot{width:11px;height:11px;border-radius:50%}
+.browser-dot.r{background:#FF5F57}.browser-dot.y{background:#FEBC2E}.browser-dot.g{background:#28C840}
+.browser-url{margin-left:1rem;flex:1;background:#0c0c0e;border-radius:6px;padding:0.4rem 1rem;font-size:0.78rem;color:var(--grey);text-align:center}
+.browser-screen{aspect-ratio:16/10;background:linear-gradient(160deg,#0F0F12,#1a1512);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;position:relative;overflow:hidden}
+.browser-screen::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,rgba(212,168,87,0.15),transparent 60%)}
+.mockup-title{font-size:clamp(1.5rem,4vw,3rem);font-weight:800;letter-spacing:-0.02em;text-align:center;position:relative;z-index:2}
+.mockup-title .g{color:var(--accent)}
+.mockup-sub{color:var(--grey);margin-top:0.8rem;font-size:0.9rem;position:relative;z-index:2}
+.showcase-label{position:absolute;opacity:0;will-change:opacity,transform;z-index:5}
+.sl-title{font-weight:700;font-size:1.05rem;margin-bottom:0.2rem}
+.sl-desc{color:var(--grey);font-size:0.8rem;max-width:190px;line-height:1.5}
+.sl-1{top:18%;left:6%;text-align:right}.sl-2{top:30%;right:6%;text-align:left}.sl-3{bottom:22%;left:7%;text-align:right}.sl-4{bottom:16%;right:7%;text-align:left}
+@media(max-width:800px){.showcase-label{font-size:0.7rem}.sl-desc{max-width:110px;font-size:0.68rem}}
+.sticky-caption{position:absolute;bottom:7%;left:50%;transform:translateX(-50%);text-align:center;width:90%;z-index:6}
+.sticky-caption h2{font-size:clamp(1.6rem,4vw,2.8rem);font-weight:700;letter-spacing:-0.02em;transition:opacity .3s}
+.services{padding:10rem 2rem;max-width:1100px;margin:0 auto}
+.section-eyebrow{font-size:0.8rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;text-align:center}
+.section-title{font-size:clamp(2.2rem,5vw,4rem);font-weight:800;letter-spacing:-0.03em;text-align:center;margin-bottom:4rem}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.service-card{background:var(--panel);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:2.5rem;transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .4s;opacity:0;transform:translateY(40px)}
+.service-card.in{opacity:1;transform:translateY(0)}
+.service-card:hover{transform:translateY(-8px);border-color:var(--accent)}
+.service-icon{width:52px;height:52px;border-radius:12px;background:linear-gradient(145deg,var(--accent),var(--accent-deep));display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1.5rem}
+.service-card h3{font-size:1.2rem;font-weight:700;margin-bottom:0.6rem}
+.service-card p{color:var(--grey);font-size:0.9rem;line-height:1.7}
+@media(max-width:800px){.services-grid{grid-template-columns:1fr}}
+.price-section{padding:8rem 2rem;text-align:center;position:relative;overflow:hidden}
+.price-glow{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(212,168,87,0.1),transparent 60%)}
+.price-card{position:relative;z-index:2;max-width:480px;margin:0 auto;background:linear-gradient(160deg,var(--panel),#141210);border:1px solid var(--accent);border-radius:24px;padding:4rem 3rem}
+.price-badge{display:inline-block;background:var(--accent);color:#000;font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:0.4rem 1.2rem;border-radius:100px;margin-bottom:2rem}
+.price-amount{font-size:5rem;font-weight:800;letter-spacing:-0.03em;line-height:1}
+.price-amount span{font-size:1.5rem;color:var(--grey);font-weight:400}
+.price-note{color:var(--grey);margin:1rem 0 2.5rem;font-size:0.95rem}
+.price-features{list-style:none;text-align:left;margin-bottom:2.5rem}
+.price-features li{padding:0.7rem 0;display:flex;align-items:center;gap:0.8rem;font-size:0.92rem}
+.price-features li::before{content:'✓';color:var(--accent);font-weight:700}
+.contact{padding:10rem 2rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:5rem}
+.contact-info h2{font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:1.5rem}
+.contact-info p{color:var(--grey);line-height:1.8;margin-bottom:2rem}
+.contact-mail{display:inline-flex;align-items:center;gap:0.8rem;background:var(--panel);border:1px solid rgba(255,255,255,0.1);padding:1.1rem 1.8rem;border-radius:12px;text-decoration:none;color:var(--accent);font-weight:600;transition:border-color .3s}
+.contact-mail:hover{border-color:var(--accent)}
+.form{background:var(--panel);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:2.5rem;display:flex;flex-direction:column;gap:1.1rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-group{display:flex;flex-direction:column;gap:0.4rem}
+.form-group label{font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey)}
+.form-group input,.form-group textarea,.form-group select{padding:0.9rem 1rem;border:1px solid rgba(255,255,255,0.1);background:var(--bg);border-radius:10px;font-family:'Manrope',sans-serif;font-size:0.92rem;color:var(--white);transition:border-color .3s;outline:none}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--accent)}
+.form-group select option{background:var(--panel)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-submit{background:var(--accent);color:#000;border:none;padding:1.1rem;font-family:'Manrope',sans-serif;font-size:0.95rem;font-weight:700;cursor:pointer;border-radius:100px;transition:transform .3s,background .3s}
+.form-submit:hover{transform:scale(1.02);background:var(--accent-glow)}
+@media(max-width:800px){.contact{grid-template-columns:1fr;gap:3rem}.form-row{grid-template-columns:1fr}}
+footer{padding:3rem 2rem;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.82rem;color:var(--grey)}
+.foot-logo{font-size:1.1rem;font-weight:800;color:var(--white)}
+.foot-logo span{color:var(--accent)}
+.foot-links{display:flex;gap:1.5rem}
+.foot-links a{color:var(--grey);text-decoration:none;transition:color .3s}
+.foot-links a:hover{color:var(--accent)}
+@media(max-width:600px){footer{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">PB<span>.</span>Webdesign</div>
+  <ul class="nav-links">
+    <li><a href="#services">Leistungen</a></li>
+    <li><a href="#price">Preis</a></li>
+    <li><a href="#contact">Kontakt</a></li>
+    <li><a href="#contact" class="nav-cta">Anfragen</a></li>
+  </ul>
+</nav>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Webdesign für lokale KMU · Schweiz</div>
+    <h1>
+      <span class="l" style="animation-delay:.3s">W</span><span class="l" style="animation-delay:.35s">e</span><span class="l" style="animation-delay:.4s">b</span><span class="l" style="animation-delay:.45s">s</span><span class="l" style="animation-delay:.5s">e</span><span class="l" style="animation-delay:.55s">i</span><span class="l" style="animation-delay:.6s">t</span><span class="l" style="animation-delay:.65s">e</span><span class="l" style="animation-delay:.7s">n</span><br/>
+      <span class="l grad" style="animation-delay:.8s">die&nbsp;</span><span class="l grad" style="animation-delay:.9s">auffallen.</span>
+    </h1>
+    <p>Ich erstelle moderne, interaktive Webseiten für Unternehmen, die online herausstechen wollen — ohne technischen Aufwand für Sie.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-gold">Projekt starten</a>
+      <a href="#services" class="btn-ghost">Mehr erfahren</a>
+    </div>
+  </div>
+  <div class="hero-hint">↓ Scrollen</div>
+</section>
+<section class="sticky-section" id="showcase">
+  <div class="sticky-inner">
+    <div class="showcase-bg" id="scGlow"></div>
+    <div class="showcase-label sl-1" id="scl1"><div class="sl-title">Individuelles Design</div><div class="sl-desc">Kein Baukasten. Jede Seite einzigartig.</div></div>
+    <div class="showcase-label sl-2" id="scl2"><div class="sl-title">Für Mobile optimiert</div><div class="sl-desc">Perfekt auf Handy, Tablet und Desktop.</div></div>
+    <div class="showcase-label sl-3" id="scl3"><div class="sl-title">Google-optimiert</div><div class="sl-desc">Damit Sie gefunden werden.</div></div>
+    <div class="showcase-label sl-4" id="scl4"><div class="sl-title">Blitzschnell</div><div class="sl-desc">Ladezeiten, die begeistern.</div></div>
+    <div class="browser" id="browser">
+      <div class="browser-bar">
+        <div class="browser-dot r"></div><div class="browser-dot y"></div><div class="browser-dot g"></div>
+        <div class="browser-url">ihre-firma.ch</div>
+      </div>
+      <div class="browser-screen">
+        <div class="mockup-title">Ihre Webseite.<br/><span class="g">Ihr Erfolg.</span></div>
+        <div class="mockup-sub">So könnte Ihr Auftritt aussehen.</div>
+      </div>
+    </div>
+    <div class="sticky-caption"><h2 id="scCaption">Von der Idee zur fertigen Webseite.</h2></div>
+  </div>
+</section>
+<section class="services" id="services">
+  <div class="section-eyebrow">Was ich anbiete</div>
+  <h2 class="section-title">Alles aus einer Hand</h2>
+  <div class="services-grid">
+    <div class="service-card"><div class="service-icon">🎨</div><h3>Individuelles Design</h3><p>Massgeschneiderte Webseiten, die zu Ihrer Marke passen — modern, einzigartig und professionell.</p></div>
+    <div class="service-card"><div class="service-icon">📱</div><h3>Mobil-optimiert</h3><p>Ihre Seite sieht auf jedem Gerät perfekt aus — vom Smartphone bis zum grossen Bildschirm.</p></div>
+    <div class="service-card"><div class="service-icon">🔍</div><h3>Google-Optimierung</h3><p>Grundlegende SEO, damit potenzielle Kunden Sie bei Google finden.</p></div>
+    <div class="service-card"><div class="service-icon">🌐</div><h3>Hosting & Domain</h3><p>Ich kümmere mich um alles Technische. Ihre Seite ist rund um die Uhr erreichbar.</p></div>
+    <div class="service-card"><div class="service-icon">✉️</div><h3>Kontaktformular</h3><p>Ihre Kunden erreichen Sie direkt über die Webseite — einfach und unkompliziert.</p></div>
+    <div class="service-card"><div class="service-icon">🔧</div><h3>Laufender Support</h3><p>Änderungen, Updates oder Fragen? Ich bin für Sie da und passe alles schnell an.</p></div>
+  </div>
+</section>
+<section class="price-section" id="price">
+  <div class="price-glow"></div>
+  <div class="price-card">
+    <div class="price-badge">All-Inclusive</div>
+    <div class="price-amount">150 <span>CHF/Mt.</span></div>
+    <div class="price-note">Keine Einrichtungskosten · Mindestlaufzeit 3 Monate</div>
+    <ul class="price-features">
+      <li>Individuelles, professionelles Design</li>
+      <li>Bis zu 6 Seiten</li>
+      <li>Kontaktformular</li>
+      <li>Mobil-optimiert & Google-ready</li>
+      <li>Domain & Hosting inklusive</li>
+      <li>Laufende Anpassungen & Support</li>
+    </ul>
+    <a href="#contact" class="btn-gold" style="display:block;text-align:center">Jetzt starten</a>
+  </div>
+</section>
+<section class="contact" id="contact">
+  <div class="contact-info">
+    <div class="section-eyebrow" style="text-align:left">Kontakt</div>
+    <h2>Lassen Sie uns starten.</h2>
+    <p>Füllen Sie das Formular aus oder schreiben Sie mir direkt — ich melde mich so schnell wie möglich bei Ihnen.</p>
+    <a href="mailto:info@pbwebdesign.ch" class="contact-mail">✉ info@pbwebdesign.ch</a>
+  </div>
+  <form class="form" action="https://formspree.io/f/mkokawjl" method="POST">
+    <div class="form-row">
+      <div class="form-group"><label>Vorname</label><input type="text" name="vorname" placeholder="Max" /></div>
+      <div class="form-group"><label>Nachname</label><input type="text" name="nachname" placeholder="Mustermann" /></div>
+    </div>
+    <div class="form-group"><label>E-Mail</label><input type="email" name="email" placeholder="max@mustermann.ch" /></div>
+    <div class="form-group"><label>Unternehmen</label><input type="text" name="unternehmen" placeholder="Muster GmbH" /></div>
+    <div class="form-group"><label>Betreff</label>
+      <select name="betreff">
+        <option value="">Bitte wählen...</option>
+        <option>Neue Webseite – 150 CHF/Mt.</option>
+        <option>Technisches Problem</option>
+        <option>Änderung / Anpassung</option>
+        <option>Allgemeine Frage</option>
+        <option>Anderes Anliegen</option>
+      </select>
+    </div>
+    <div class="form-group"><label>Nachricht</label><textarea name="nachricht" placeholder="Beschreiben Sie kurz Ihr Vorhaben..."></textarea></div>
+    <button class="form-submit" type="submit">Anfrage absenden</button>
+  </form>
+</section>
+<footer>
+  <div class="foot-logo">PB<span>.</span>Webdesign</div>
+  <div>© 2026 PB Webdesign · pbwebdesign.ch</div>
+  <div class="foot-links">
+    <a href="agb.html">AGB</a>
+    <a href="datenschutz.html">Datenschutz</a>
+  </div>
+</footer>
+<script>
+const showcase=document.getElementById('showcase');
+const browser=document.getElementById('browser');
+const scGlow=document.getElementById('scGlow');
+const scCaption=document.getElementById('scCaption');
+const scLabels=[document.getElementById('scl1'),document.getElementById('scl2'),document.getElementById('scl3'),document.getElementById('scl4')];
+const scCaptions=["Von der Idee zur fertigen Webseite.","Individuell für Ihr Unternehmen.","Auf allen Geräten perfekt.","Bereit, online durchzustarten?"];
+window.addEventListener('scroll',()=>{
+  const rect=showcase.getBoundingClientRect();
+  const total=showcase.offsetHeight-window.innerHeight;
+  let p=(-rect.top)/total;p=Math.min(1,Math.max(0,p));
+  const scale=0.75+p*0.35;const rotX=Math.sin(p*Math.PI)*6;const rotY=(p-0.5)*14;
+  browser.style.transform=`perspective(1200px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(${scale})`;
+  scGlow.style.opacity=Math.sin(p*Math.PI);
+  scLabels.forEach((lab,i)=>{
+    const appearAt=0.12+i*0.18;const d=p-appearAt;
+    if(d>0&&d<0.26){const o=Math.sin((d/0.26)*Math.PI);lab.style.opacity=o;lab.style.transform=`translateY(${(1-o)*20}px)`;}
+    else{lab.style.opacity=0;}
+  });
+  const idx=Math.min(scCaptions.length-1,Math.floor(p*scCaptions.length));
+  if(scCaption.textContent!==scCaptions[idx]){scCaption.style.opacity=0;setTimeout(()=>{scCaption.textContent=scCaptions[idx];scCaption.style.opacity=1;},150);}
+});
+const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*80);}});},{threshold:0.2});
+document.querySelectorAll('.service-card').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
